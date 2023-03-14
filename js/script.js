@@ -37,7 +37,7 @@ dohs.addEventListener("change", verify_call);
 
 reg_btn.addEventListener("click", ()=>{
     var id = id_input.value;
-    register(id, cookie_email);
+    register(id, cookie_email, cookie_name);
 });
 
 function verify_call(e){
@@ -48,8 +48,8 @@ function verify_call(e){
 
 
 
-function register(id,email){
-    let regObj={id:id,email:email};
+function register(id,email,name){
+    let regObj={id:id,email:email,name:name};
     console.log(regObj)
     let options={
         method:"POST",
@@ -94,7 +94,7 @@ function downloadData(e){
         let lunchData=resp['lunchData'];
         // table creation in html <can be ignored>//
         lunchData.forEach(element => {
-            bookingData.push([element['id'],element['name'],"___"])
+            bookingData.push([element['id'],element['email'],"___"])
         });
 
         console.log(lunchData);

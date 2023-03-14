@@ -135,7 +135,7 @@
   </div>
 
   <div id="loader" class="loader_div" style="display: none">
-    <a style="font-size: 60px; font-weight: bold; color: #222222; position: relative" class="vertical-center-2">Updating.. Please Wait!</a>
+    <a style="font-size: 60px; font-weight: bold; color: #333333; position: relative" class="vertical-center-2">Updating.. Please Wait!</a>
   </div>
 
   <div id="tick_mark_div" class="div_with_bg" style="display: none">
@@ -177,10 +177,15 @@
     var login_btn = document.getElementById("login_btn");
     var dashboard_div = document.getElementById("main_ele")
     var cookie_email = getCookie('email_lunch_booking_ulkasemi');
+    var cookie_name = getCookie('name_lunch_booking_ulkasemi');
     var cookie_email_domain = cookie_email.substring(cookie_email.indexOf('@') + 1);
     console.log(cookie_email_domain);
-    if (cookie_email_domain == 'ulkasemi.com') {
+    console.log(cookie_name);
+    if (cookie_email_domain == 'ulkasemi.com' && cookie_name!='') {
       loadDashboard();
+    }
+    else{
+      document.getElementById("loader").style.display = "none";
     }
 
     function handleCredentialResponse(response) {
@@ -191,6 +196,7 @@
 
       if (domain == 'ulkasemi.com') {
         setCookie('email_lunch_booking_ulkasemi', responsePayload.email, 365);
+        setCookie('name_lunch_booking_ulkasemi', responsePayload.name, 365);
         loadDashboard();
       } else {
         alert("Please login in with ulkasemi email");
