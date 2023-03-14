@@ -120,7 +120,8 @@
       </div>
     </div>
   </div>
-
+<!--1058830329036-52avoapkqap1gn34h7ikt4r8326mdlqd.apps.googleusercontent.com-->
+<!--  old: 381380085175-eb444k641i1l069l62f9e1mk9m3rgcu8.apps.googleusercontent.com-->
   <div id="g_id_onload"
     data-client_id="381380085175-eb444k641i1l069l62f9e1mk9m3rgcu8.apps.googleusercontent.com"
     data-context="signin"
@@ -229,11 +230,11 @@
 
     var dates = [];
     dates[0] = new Date(); // defaults to today
-    dates[1] = addDays(dates[0], 31);
+    dates[1] = addDays(dates[0], 1);
 
     // console.log(dates[0].getDate() + " " + monthFormatter.format(dates[0]).slice(0, 3));
     $(".book_lunch_text").html(
-      "Book Lunch for Tomorrow (" + dates[0].getDate() + '<sup>th</sup> ' + monthFormatter.format(dates[0]).slice(0, 3) + ")"
+      "Book Lunch for Tomorrow (" + dates[1].getDate() + '<sup>th</sup> ' + monthFormatter.format(dates[1]).slice(0, 3) + ")"
     );
 
     var currentDate = 0; // index into dates[]
