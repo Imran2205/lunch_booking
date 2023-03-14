@@ -80,7 +80,7 @@ function downloadData(e){
     date=date.getDate();
     console.log(date)
     e.preventDefault();
-    let lRegnum=regnum.checked;
+    let lRegnum=regnum2.checked;
     const selectedLocation =lRegnum?"Regnum":"DOHS";
     //post request paraameters
     let lunchDict={download:'T',date:date,location:selectedLocation};
