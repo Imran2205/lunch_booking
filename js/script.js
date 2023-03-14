@@ -151,6 +151,7 @@ let dateCheck= fetch(url+"?email="+cookie_email)
     if (r['email']=="N/A" ){
         book_container.style.display = 'none';
         reg_div.style.display = 'block';
+        loader.style.display = 'none';
         return r
     }
     else{
