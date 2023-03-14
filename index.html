@@ -232,6 +232,8 @@
       if (domain == 'ulkasemi.com') {
         setCookie('email_lunch_booking_ulkasemi', responsePayload.email, 365);
         setCookie('name_lunch_booking_ulkasemi', responsePayload.name, 365);
+        cookie_email = responsePayload.email;
+        cookie_name = responsePayload.name;
         loadDashboard();
       } else {
         alert("Please login in with ulkasemi email");
