@@ -27,6 +27,32 @@ body {
   font-size: 17px;
 }
 
+.loader_div {
+  background-color: #67cdcc;
+  text-align: center;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  position: absolute;
+}
+
+.div_with_bg
+{
+  background-color: #67cdcc;
+  text-align: center;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  position: absolute;
+  background: url('https://raw.githubusercontent.com/asmsaad/launch-booking-webpage/main/icons/tick-mark.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .parent-container{
   display: flex;
   flex-direction: column;
@@ -35,6 +61,13 @@ body {
 .vertical-center {
   margin: 0;
   position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.vertical-center-2 {
+  margin: 0;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -50,6 +83,23 @@ body {
   padding: 35px 35px 35px 35px;
   width: fit-content;
   border-radius: 20px;
+}
+
+.register_container {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  box-shadow: .3rem .3rem .6rem var(--greyLight-2),
+                -.2rem -.2rem .5rem var(--white),
+                inset .2rem .2rem .5rem var(--greyLight-2),
+                inset -.2rem -.2rem .5rem var(--white);
+  padding: 35px 35px 35px 35px;
+  width: 555px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.register_container_child_div {
+  display: flex;
 }
 
 .switch-holder {
@@ -480,9 +530,88 @@ body {
   color: white;
 }
 
+/*  BUTTONS  */
+.btn_reg {
+  width: 15rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+  justify-self: center;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.btn_reg__primary {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+  background: var(--primary);
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+  color: var(--greyLight-1);
+}
+.btn_reg__primary:hover {
+  color: var(--white);
+}
+.btn_reg__primary:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+}
+.btn_reg__secondary {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
+  color: #d01339;
+}
+.btn_reg__secondary:hover {
+  color: #00b33c;
+}
+.btn_reg__secondary:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+.btn_reg p {
+  font-size: 1.6rem;
+}
 
 
-
-
+/*  FORM  */
+.form {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+.form__input {
+  width: 20.4rem;
+  height: 3.4rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  padding-left: 1.4rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+  background: none;
+  font-family: inherit;
+  color: var(--greyDark);
+  margin-right: 8px;
+}
+.form__input::-webkit-input-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input::-moz-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input:-ms-input-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input::-ms-input-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input::placeholder {
+  color: var(--greyLight-3);
+}
+.form__input:focus {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
 
 

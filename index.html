@@ -9,7 +9,20 @@
 </head>
 <body>
   <div class="parent-container vertical-center" id="main_ele" style="display: none">
-    <div class="container">
+    <div class="register_container" style="display: none" id="reg_div">
+      <div style="margin-bottom: 10px">
+        <a style="margin-top: auto; margin-bottom: auto; font-size: 24px; font-weight: 600">No ID Found</a>
+        <br>
+        <a style="margin-top: auto; margin-bottom: auto; font-size: 24px; font-weight: 600">Register your ID</a>
+      </div>
+      <div class="register_container_child_div">
+        <div class="form">
+          <input type="text" id="id_input" class="form__input" placeholder="Type your ID...">
+        </div>
+        <div class="btn_reg btn_reg__secondary" id="reg_btn"><p>Register</p></div>
+      </div>
+    </div>
+    <div class="container" style="display: none" id="book_container">
       <div class="office-location-container">
         <div style="margin-bottom: 10px">
           <a style="margin-top: auto; margin-bottom: auto; font-size: 24px; font-weight: 600">Choose Office Location</a>
@@ -120,8 +133,16 @@
       </div>
     </div>
   </div>
-<!--1058830329036-52avoapkqap1gn34h7ikt4r8326mdlqd.apps.googleusercontent.com-->
-<!--  old: 381380085175-eb444k641i1l069l62f9e1mk9m3rgcu8.apps.googleusercontent.com-->
+
+  <div id="loader" class="loader_div" style="display: none">
+    <a style="font-size: 40px; font-weight: bold; color: #444444; position: relative" class="vertical-center-2">Updating.. Please Wait!</a>
+  </div>
+
+  <div id="tick_mark_div" class="div_with_bg" style="display: none">
+
+  </div>
+  <!--1058830329036-52avoapkqap1gn34h7ikt4r8326mdlqd.apps.googleusercontent.com-->
+  <!--  old: 381380085175-eb444k641i1l069l62f9e1mk9m3rgcu8.apps.googleusercontent.com-->
   <div id="g_id_onload"
     data-client_id="381380085175-eb444k641i1l069l62f9e1mk9m3rgcu8.apps.googleusercontent.com"
     data-context="signin"
