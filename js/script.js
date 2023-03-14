@@ -18,14 +18,23 @@ const downloadBtn=document.querySelector('.btn');
 const statement=document.querySelector('#booking-statement');
 let selectedDate=document.querySelector('#booking-date');
 const regnum = document.getElementById("radio-1");
+const dohs = document.getElementById("radio-2");
 const regnum2= document.getElementById("radio-3");
+const container_section = document.getElementById("main_ele");
 
 // let tbody=document.getElementById('table-body');
 // submitBtn.addEventListener('click',postData);
 downloadBtn.addEventListener('click',downloadData);
 
+checkbox.addEventListener("change",postData);
+regnum.addEventListener("change", verify_call);
+dohs.addEventListener("change", verify_call);
 
-checkbox.addEventListener("change",postData)
+function verify_call(e){
+    if (checkbox.checked) {
+        postData(e);
+    }
+}
 
 function downloadData(e){
     //date and location selection from input and get the data people who booked lunch
@@ -56,10 +65,12 @@ function downloadData(e){
         });
 
         console.log(lunchData);
-        generatePdf(bookingData)
+        generatePdf(bookingData);
         return resp
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+        console.error(err);
+    });
 }
 
 //update data on the database as per request of the user
@@ -77,8 +88,15 @@ function postData(e){
     }
     fetch(`${url}?${qs}`,options)
         .then(res => res.json())
-        .then(resp => console.log(resp))
-        .catch(err => console.error(err));
+        .then(resp => {
+            console.log(resp);
+            alert("booking status updated successfully");
+            return resp;
+        })
+        .catch(err => {
+            console.error(err);
+            alert("booking status update failed");
+        });
 }
 
 
@@ -91,7 +109,11 @@ let dateCheck= fetch(url+"?email="+cookie_email)
     console.log(r['userType']);
     let userType=(r['userType']);
     if (userType=="Admin"){
-      downloadSection.style['display']='inline-block';
+      downloadSection.style['display']='block';
+      container_section.classList.remove("vertical-center");
+    }
+    else{
+        container_section.classList.add("vertical-center");
     }
 
     if (r['status']=="Y" ){
@@ -100,6 +122,18 @@ let dateCheck= fetch(url+"?email="+cookie_email)
         checkbox.checked = true;
 
     }
+    else {
+        checkbox.checked = false;
+    }
+    if (r['location'] == "Regnum"){
+        regnum.cheked = true;
+        dohs.checked = false;
+    }
+    else{
+        regnum.cheked = false;
+        dohs.checked = true;
+    }
+
     return r
 })
 
