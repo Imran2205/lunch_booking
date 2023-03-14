@@ -12,7 +12,7 @@ let tomorrow=today.setDate(today.getDate() + 1);
 //variable Declaration
 const checkbox=document.getElementById('lunch-book');
 // const submitBtn=document.querySelector('#submit');
-const url="https://script.google.com/macros/s/AKfycbynm_H6QoBf8hiaYpl35pW-gV5PQMidGr4rGNZ2kHP3VQKp6iDLhWxdhHuukKXv-NSqXA/exec";
+const url="https://script.google.com/macros/s/AKfycbyEqjrsLNMhwg7btDp6pZ2mYvXm8iDGTwNSe3UFXMKJr7vSp753p3NRtqRkQ_eNOq8eXg/exec";
 const downloadSection=document.querySelector('#date-picker-container');
 const downloadBtn=document.querySelector('.btn');
 const statement=document.querySelector('#booking-statement');
@@ -22,7 +22,9 @@ const dohs = document.getElementById("radio-2");
 const regnum2= document.getElementById("radio-3");
 const container_section = document.getElementById("main_ele");
 const loader = document.getElementById("loader")
+const landing_loader = document.getElementById("loader_div")
 const tick_div = document.getElementById("tick_mark_div")
+const cross_div = document.getElementById("cross_mark_div")
 const book_container = document.getElementById("book_container")
 const reg_div = document.getElementById("reg_div")
 const reg_btn = document.getElementById("reg_btn")
@@ -132,7 +134,9 @@ function postData(e){
         })
         .catch(err => {
             console.error(err);
-            alert("booking status update failed");
+            // alert("booking status update failed");
+            cross_div.style.display = 'block';
+            setTimeout(()=>cross_div.style.display = 'none', 2000)
             loader.style.display = 'none';
             checkbox.checked = !checkbox.checked;
         });
@@ -152,11 +156,13 @@ let dateCheck= fetch(url+"?email="+cookie_email)
         book_container.style.display = 'none';
         reg_div.style.display = 'block';
         loader.style.display = 'none';
+        landing_loader.style.display = 'none';
         return r
     }
     else{
         book_container.style.display = 'block';
         loader.style.display = 'none';
+        landing_loader.style.display = 'none';
     }
 
     if (userType=="Admin"){
