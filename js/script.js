@@ -155,6 +155,7 @@ let dateCheck= fetch(url+"?email="+cookie_email)
     }
     else{
         book_container.style.display = 'block';
+        loader.style.display = 'none';
     }
 
     if (userType=="Admin"){

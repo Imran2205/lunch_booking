@@ -40,7 +40,7 @@ body {
 
 .div_with_bg
 {
-  background-color: #67cdcc;
+  background-color: rgba(0,0,0,0.2);
   text-align: center;
   left: 0px;
   top: 0px;
@@ -48,7 +48,7 @@ body {
   width: 100%;
   z-index: 999;
   position: absolute;
-  background: url('https://raw.githubusercontent.com/asmsaad/launch-booking-webpage/main/icons/tick-mark.png');
+  background-image: url('https://raw.githubusercontent.com/asmsaad/launch-booking-webpage/main/icons/tick-mark.png');
   background-repeat: no-repeat;
   background-position: center;
 }
