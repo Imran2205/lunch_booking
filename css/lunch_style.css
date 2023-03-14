@@ -28,29 +28,31 @@ body {
 }
 
 .loader_div {
-  background-color: #67cdcc;
+  background-color: rgba(0,0,0,0.2);
   text-align: center;
-  left: 0px;
-  top: 0px;
-  height: 100%;
-  width: 100%;
+  left: 10%;
+  top: 10%;
+  height: 80%;
+  width: 80%;
   z-index: 999;
   position: absolute;
+  border-radius: 20px;
 }
 
 .div_with_bg
 {
   background-color: rgba(0,0,0,0.2);
   text-align: center;
-  left: 0px;
-  top: 0px;
-  height: 100%;
-  width: 100%;
+  left: 10%;
+  top: 10%;
+  height: 80%;
+  width: 80%;
   z-index: 999;
   position: absolute;
   background-image: url('https://raw.githubusercontent.com/asmsaad/launch-booking-webpage/main/icons/tick-mark.png');
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 20px;
 }
 
 .parent-container{
