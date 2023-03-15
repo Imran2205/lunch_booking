@@ -167,6 +167,8 @@ function check_email(){
             landing_loader.style.display = 'none';
         }
 
+        // return r;
+
         if (userType=="Admin"){
           downloadSection.style['display']='block';
           container_section.classList.remove("vertical-center");
@@ -186,11 +188,12 @@ function check_email(){
             checkbox.checked = false;
         }
         if (r['location'] == "Regnum"){
-            regnum.cheked = true;
+            regnum.checked = true;
             dohs.checked = false;
         }
         else{
-            regnum.cheked = false;
+            console.log("dsdsfdsgfsdgfasdgfasdgfvasDZ")
+            regnum.checked = false;
             dohs.checked = true;
         }
 
@@ -198,7 +201,7 @@ function check_email(){
     })
 }
 
-check_email();
+cookie_email?check_email():null;
     // var dateString = tomorrow.toLocaleDateString();
     // var dateElement = document.getElementById("date");
     // dateElement.innerHTML = dateString;
