@@ -62,8 +62,9 @@ function register(id,email,name){
     .then(resp =>{
         console.log(resp);
         reg_div.style.display = 'none';
-        book_container.style.display = 'block';
-        return resp;
+        window.location.reload();
+        // book_container.style.display = 'block';
+        // return resp;
     }).catch(err => {
         console.error(err);
         alert("registration failed");
