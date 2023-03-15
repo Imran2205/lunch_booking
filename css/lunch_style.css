@@ -621,7 +621,7 @@ body {
  .landing_loading h1 {
 	 width: 100%;
 	 color: #0078d7;
-   font-size: 4em;
+   font-size: 6vh;
 }
  .landing_loading .dots {
 	 position: relative;
