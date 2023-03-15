@@ -248,6 +248,7 @@
       console.log(domain)
 
       if (domain == 'ulkasemi.com') {
+        document.getElementById("loader_div").style.display = 'block';
         setCookie('email_lunch_booking_ulkasemi', responsePayload.email, 365);
         setCookie('name_lunch_booking_ulkasemi', responsePayload.name, 365);
         cookie_email = responsePayload.email;
