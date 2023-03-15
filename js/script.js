@@ -62,8 +62,9 @@ function register(id,email,name){
     .then(resp =>{
         console.log(resp);
         reg_div.style.display = 'none';
-        window.location.reload();
+        // window.location.reload();
         // book_container.style.display = 'block';
+        check_email();
         // return resp;
     }).catch(err => {
         console.error(err);
@@ -144,58 +145,60 @@ function postData(e){
 }
 
 
-// get request to check if the user is admin or not
-let dateCheck= fetch(url+"?email="+cookie_email)
-.then(r=>r.json())
-.then( r=>{
-    r=JSON.parse(r)
-    console.log(r);
-    console.log(r['userType']);
-    let userType=(r['userType']);
+function check_email(){
+    let dateCheck= fetch(url+"?email="+cookie_email)
+    .then(r=>r.json())
+    .then( r=>{
+        r=JSON.parse(r)
+        console.log(r);
+        console.log(r['userType']);
+        let userType=(r['userType']);
 
-    if (r['email']=="N/A" ){
-        book_container.style.display = 'none';
-        reg_div.style.display = 'block';
-        loader.style.display = 'none';
-        landing_loader.style.display = 'none';
+        if (r['email']=="N/A" ){
+            book_container.style.display = 'none';
+            reg_div.style.display = 'block';
+            loader.style.display = 'none';
+            landing_loader.style.display = 'none';
+            return r
+        }
+        else{
+            book_container.style.display = 'block';
+            loader.style.display = 'none';
+            landing_loader.style.display = 'none';
+        }
+
+        if (userType=="Admin"){
+          downloadSection.style['display']='block';
+          container_section.classList.remove("vertical-center");
+        }
+        else{
+            downloadSection.style['display']='none';
+            container_section.classList.add("vertical-center");
+        }
+
+        if (r['status']=="Y" ){
+            // statement.innerHTML="Already Booked";
+            // console.log(checkbox.value)
+            checkbox.checked = true;
+
+        }
+        else {
+            checkbox.checked = false;
+        }
+        if (r['location'] == "Regnum"){
+            regnum.cheked = true;
+            dohs.checked = false;
+        }
+        else{
+            regnum.cheked = false;
+            dohs.checked = true;
+        }
+
         return r
-    }
-    else{
-        book_container.style.display = 'block';
-        loader.style.display = 'none';
-        landing_loader.style.display = 'none';
-    }
+    })
+}
 
-    if (userType=="Admin"){
-      downloadSection.style['display']='block';
-      container_section.classList.remove("vertical-center");
-    }
-    else{
-        downloadSection.style['display']='none';
-        container_section.classList.add("vertical-center");
-    }
-
-    if (r['status']=="Y" ){
-        // statement.innerHTML="Already Booked";
-        // console.log(checkbox.value)
-        checkbox.checked = true;
-
-    }
-    else {
-        checkbox.checked = false;
-    }
-    if (r['location'] == "Regnum"){
-        regnum.cheked = true;
-        dohs.checked = false;
-    }
-    else{
-        regnum.cheked = false;
-        dohs.checked = true;
-    }
-
-    return r
-})
-
+check_email();
     // var dateString = tomorrow.toLocaleDateString();
     // var dateElement = document.getElementById("date");
     // dateElement.innerHTML = dateString;
