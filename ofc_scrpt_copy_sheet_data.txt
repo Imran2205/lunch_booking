@@ -1,0 +1,60 @@
+function main(workbook: ExcelScript.Workbook) {
+  let sub_cat_column = "L";
+  let src_unq_col = "G"
+  let dest_unq_col = "C"
+
+  let column_src_order: string[];
+  column_src_order = ["A", "B", "G", "C", "D", "J", "E", "F", "I", "K", "L"];
+
+  let column_dest_order: string[];
+  column_dest_order = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
+
+  let source_sheet = workbook.getWorksheet("Projs");
+  let dest_sheet = workbook.getWorksheet("IP");
+
+  let dest_range = dest_sheet.getUsedRange();
+  let dest_rows = dest_range.getRowCount();
+  var prev_added: string[];
+  prev_added = [];
+  for (var i = 2; i <= dest_rows; i++) {
+    let cell = dest_sheet.getRange(dest_unq_col + i);
+    let value = cell.getValue().toString();
+    prev_added.push(value);
+  }
+
+  console.log(prev_added);
+
+  let src_range = source_sheet.getUsedRange();
+  // let src_col_num = getColumnNumber(sub_cat_column);
+  let rows = src_range.getRowCount();
+
+  for (var i = 2; i<=rows; i++) {
+    let cell = source_sheet.getRange(sub_cat_column+i);
+    let value = cell.getValue().toString();
+
+    let unq_cell = source_sheet.getRange(src_unq_col + i);
+    let unq_val = unq_cell.getValue().toString();
+
+    if (value.indexOf("IP") !== -1) {
+      if (prev_added.indexOf(unq_val) == -1) {
+        dest_rows += 1;
+        for (var j = 0; j < column_src_order.length; j++) {
+          let copy_cell = source_sheet.getRange(column_src_order[j]+i);
+          let copy_val = copy_cell.getValue().toString();
+
+          let paste_cell = dest_sheet.getRange(column_dest_order[j] + dest_rows);
+          paste_cell.setValue(copy_val);
+        }
+
+      }
+    }
+  }
+}
+
+function getColumnNumber(col_letter: string) {
+  var col_number = 0;
+  for (var i = 0; i < col_letter.length; i++) {
+    col_number = col_number * 26 + (col_letter.charCodeAt(i) - 64);
+  }
+  return col_number;
+}
