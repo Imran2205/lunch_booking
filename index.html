@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Lunch Booking</title>
+  <link rel="manifest" href="/json/manifest.json">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/lunch_style.css">
   <link rel="stylesheet" href="./css/waiting_loader.css">
@@ -212,8 +213,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
-
-
 
   <script>
     // console.log(window.location.origin);
@@ -665,41 +664,12 @@
     }
   </script>
 
-<!--  <script type="text/javascript">-->
-<!--    let permission = Notification.permission;-->
-<!--    if(permission === "granted") {-->
-<!--       showNotification();-->
-<!--    } else if(permission === "default"){-->
-<!--       requestAndShowPermission();-->
-<!--    } else {-->
-<!--      // requestAndShowPermission();-->
-<!--      alert("Use normal alert");-->
-<!--    }-->
-<!--    function showNotification() {-->
-<!--       // if(document.visibilityState === "visible") {-->
-<!--       //     return;-->
-<!--       // }-->
-<!--       var title = "JavaScript Jeep";-->
-<!--       var icon = "images/food.png"-->
-<!--       var body = "Message to be displayed";-->
-<!--       var notification = new Notification('Title', { body, icon });-->
-<!--       notification.onclick = () => {-->
-<!--              notification.close();-->
-<!--              window.parent.focus();-->
-<!--       }-->
-<!--    }-->
-<!--    function requestAndShowPermission() {-->
-<!--       Notification.requestPermission(function (permission) {-->
-<!--          if (permission === "granted") {-->
-<!--                showNotification();-->
-<!--          }-->
-<!--       });-->
-<!--    }-->
-<!--  </script>-->
-
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-messaging.js"></script>
+<!--  <script src="js/fcm_script.js"></script>-->
 
   <script>
     const firebaseConfig = {
@@ -753,11 +723,9 @@
       console.log('Registering service worker');
       registerWorker().catch(error => console.error(error));
     }
-
-
   </script>
 
-<script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
 
