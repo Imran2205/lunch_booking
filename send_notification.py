@@ -5,13 +5,13 @@ firebase_cred = credentials.Certificate(r"C:\Users\admin\Desktop\desktop\web\lun
 firebase_app = firebase_admin.initialize_app(firebase_cred)
 
 # This registration token comes from the client FCM SDKs.
-registration_token = 'd7T8cSdSRHDXijdBaWPIxO:APA91bF4r5l2phbAIabFWSXbRxr8k6TjmmFQsFgOscH5igAwcooF8P9H-7Kf9PHMM9jzEJjTvk1Ctid8LIg7WMI6_ajbsY-b0VMZd41iLLrwtUjNNBzQXvJuu3yTKJimwmmaqhF8Yyaj'
+registration_token = 'dPK5MvZi9S7SAHvWx7VhgL:APA91bH3FUc_OV30i2vN7MhNUiF-KUPrC5N0AKZgddX3_J1IevRlL8Pea50cf_z36aYHI0RsDa2HKFxLP071yD_E2zt9nwvRY3lZzOsK2CMBeGq_e5rhyIxnm4kOxIP1Z-P7-F26Sk_F'
 
 # See documentation on defining a message payload.
 message = messaging.Message(
     data={
-        'score': '850',
-        'time': '2:45',
+        'title': '850',
+        'text': '2:45',
     },
     token=registration_token,
 )

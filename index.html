@@ -699,9 +699,15 @@
     });
 
     messaging.onMessage((payload) => {
-      console.log('Message received. ', payload);
-      var icon ='firebase-logo.png';
-      var notification = new Notification('Title', { payload, icon});
+      console.log('Message received. ', payload['data']);
+
+      var title = payload['data']['title'];
+
+      const notificationOptions = {
+        body: payload['data']['text'],
+        icon: 'images/food.png'
+      };
+      var notification = new Notification(title, notificationOptions);
     });
 
     async function registerWorker() {
