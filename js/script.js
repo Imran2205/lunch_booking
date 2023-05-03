@@ -12,7 +12,7 @@ let tomorrow=today.setDate(today.getDate() + 1);
 //variable Declaration
 const checkbox=document.getElementById('lunch-book');
 // const submitBtn=document.querySelector('#submit');
-const url="https://script.google.com/macros/s/AKfycbyEqjrsLNMhwg7btDp6pZ2mYvXm8iDGTwNSe3UFXMKJr7vSp753p3NRtqRkQ_eNOq8eXg/exec";
+const url="https://script.google.com/macros/s/AKfycbxxrd8pYRSVirofxm7i3V9nwgLnbWJHWf5KtVdSERV0e-IAWnBAoMd2SbpOQOU3i3OSsg/exec";
 const downloadSection=document.querySelector('#date-picker-container');
 const downloadBtn=document.querySelector('.btn');
 const statement=document.querySelector('#booking-statement');
@@ -96,9 +96,12 @@ function downloadData(e){
     .then(resp => {
         bookingData=[]
         let lunchData=resp['lunchData'];
+
         // table creation in html <can be ignored>//
+        let ind=1;
         lunchData.forEach(element => {
-            bookingData.push([element['id'],element['email'],"___"])
+            bookingData.push([ind,element['name'],element['email'],element['id'],""])
+            ind+=1;
         });
 
         console.log(lunchData);
@@ -218,12 +221,12 @@ function generatePdf(elements, q_date){
     doc.setLineWidth(2);
     doc.setFont("helvetica");
     doc.setFontType("bold");
-    doc.setFontSize(25);
-    let title="Lunch Booking Data";
+    doc.setFontSize(20);
+    let title="    Lunch Booking of " + (new Date(q_date)).toDateString() + "  Total Bookings: " + elements.length;
     doc.text(10, y = y + 30, title);
 
     doc.autoTable({
-        columns:["ID","Name","__"],
+        columns:["Sl","Name","Email","ID",""],
         body: elements,
         startY: 70,
         theme: 'grid',
@@ -232,6 +235,28 @@ function generatePdf(elements, q_date){
     })
     // save the data to this file
     doc.save((new Date(q_date)).toDateString());
-
-
 }
+
+function get_booking_count() {
+    let dateDict={date:dates[2].getDate(),totalBookings:1};
+    // console.log(dateDict);
+    let qs=new URLSearchParams(dateDict);
+    let options={
+        method: "POST"
+    }
+
+    fetch(`${url}?${qs}`,options)
+        .then(res => res.json())
+        .then(resp => {
+            console.log(resp);
+
+            document.getElementById("total_booking").innerHTML = resp['total'];
+        })
+        .catch(err => {
+            console.error(err);
+            // alert("booking status update failed");
+            document.getElementById("total_booking").innerHTML = "n/a";
+        });
+}
+
+get_booking_count();
