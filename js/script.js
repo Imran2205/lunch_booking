@@ -83,7 +83,7 @@ function downloadData(e){
     console.log(date)
     e.preventDefault();
     let lRegnum=regnum2.checked;
-    const selectedLocation =lRegnum?"Regnum":"DOHS";
+    const selectedLocation =lRegnum?"Regnum":"Regnum";
     //post request paraameters
     let lunchDict={download:'T',date:date,location:selectedLocation};
     let options={
@@ -102,7 +102,7 @@ function downloadData(e){
         });
 
         console.log(lunchData);
-        generatePdf(bookingData);
+        generatePdf(bookingData, newDate);
         return resp
     })
     .catch(err => {
@@ -116,7 +116,7 @@ function postData(e){
     e.preventDefault();
     //locatioin selection
     let lRegnum=regnum.checked;
-    const selectedLocation =lRegnum?"Regnum":"DOHS";
+    const selectedLocation =lRegnum?"Regnum":"Regnum";
     let status=checkbox.checked?"Y":"N";
     let dateDict={email:cookie_email,status:status,location:selectedLocation};
     // console.log(dateDict);
@@ -192,7 +192,7 @@ function check_email(){
             dohs.checked = false;
         }
         else{
-            console.log("dsdsfdsgfsdgfasdgfasdgfvasDZ")
+            // console.log("dsdsfdsgfsdgfasdgfasdgfvasDZ")
             regnum.checked = false;
             dohs.checked = true;
         }
@@ -205,7 +205,7 @@ cookie_email?check_email():null;
     // var dateString = tomorrow.toLocaleDateString();
     // var dateElement = document.getElementById("date");
     // dateElement.innerHTML = dateString;
-function generatePdf(elements){
+function generatePdf(elements, q_date){
 
     //Convert Table to PDF.
     var doc = new jsPDF("p","pt")
@@ -231,7 +231,7 @@ function generatePdf(elements){
 
     })
     // save the data to this file
-    doc.save((new Date()).toDateString());
+    doc.save((new Date(q_date)).toDateString());
 
 
 }
