@@ -222,7 +222,7 @@ function generatePdf(elements, q_date){
     doc.setFont("helvetica");
     doc.setFontType("bold");
     doc.setFontSize(20);
-    let title="    Lunch Booking of " + (new Date(q_date)).toDateString() + "  Total Bookings: " + elements.length;
+    let title="      Date: " + (new Date(q_date)).toDateString() + "                Total Bookings: " + elements.length;
     doc.text(10, y = y + 30, title);
 
     doc.autoTable({
