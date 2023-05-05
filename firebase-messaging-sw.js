@@ -13,16 +13,26 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 const messaging = firebase.messaging();
+var url = "https://imran2205.github.io/lunch_booking/"
 messaging.onBackgroundMessage(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   // Customize notification here
   const notificationTitle = payload['data']['title'];
   // console.log("sssss");
   // console.log(payload['data']);
+  url = payload['data']['url'];
   const notificationOptions = {
     body: payload['data']['text'],
-    icon: 'images/food.png'
+    icon: 'https://github.com/Imran2205/lunch_booking/raw/master/images/food.png'
   };
   self.registration.showNotification(notificationTitle,
         notificationOptions);
+  // var notification = new Notification(notificationTitle, notificationOptions);
+  // notification.onclick = function() {
+  //     window.location.href = payload['data']['url'];
+  // };
+});
+
+self.addEventListener('notificationclick', event => {
+   window.location.href = url;
 });

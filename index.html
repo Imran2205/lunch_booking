@@ -694,13 +694,25 @@
     messaging.getToken({vapidKey: 'BKX3fwJm59i47kkwQYbSTxi0qE9T8N029iXap5hKAoX8lReN1BV_Qoi9XLQI7osXeufd_AxSquBji4HPeLDYo-s'}).then((currentToken) => {
       if (currentToken) {
         console.log("token is ", currentToken);
-  //Send this token to your server and store it.
+        subscribeTokenToTopic(currentToken, 'all');
+        //Send this token to your server and store it.
       } else {
         console.log('No registration token available. Request permission to generate one.');
       }
     }).catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
     });
+
+    // messaging.onTokenRefresh(function () {
+    //   messaging.getToken({vapidKey: 'BKX3fwJm59i47kkwQYbSTxi0qE9T8N029iXap5hKAoX8lReN1BV_Qoi9XLQI7osXeufd_AxSquBji4HPeLDYo-s'})
+    //     .then(function (refreshedToken) {
+    //       console.log('Token refreshed.');
+    //       subscribeTokenToTopic(refreshedToken, 'all')
+    //     })
+    //     .catch(function (err) {
+    //       console.log('Unable to retrieve refreshed token ', err);
+    //     });
+    //   });
 
     messaging.onMessage((payload) => {
       console.log('Message received. ', payload['data']);
@@ -709,10 +721,29 @@
 
       const notificationOptions = {
         body: payload['data']['text'],
-        icon: 'images/food.png'
+        icon: 'https://github.com/Imran2205/lunch_booking/raw/master/images/food.png'
       };
       var notification = new Notification(title, notificationOptions);
+      notification.onclick = function() {
+          window.location.href = payload['data']['url'];
+      };
     });
+
+    function subscribeTokenToTopic(token, topic) {
+      fetch('https://iid.googleapis.com/iid/v1/'+token+'/rel/topics/'+topic, {
+        method: 'POST',
+        headers: new Headers({
+          'Authorization': 'key='+"AAAA9oc0pMw:APA91bEceXs98Fz5-QzC93dsbSysKidTmYXa2mVUbGVqBZvrs_AUtPomVyTY7LuWaJgPjg0ncqOWWXa2k8EvSNK70_cBf6xj-ge2ys7aeNscvmzRMnT5m-UanVR8dY5k5-B7_5QGcJl5"
+        })
+      }).then(response => {
+        if (response.status < 200 || response.status >= 400) {
+          throw 'Error subscribing to topic: '+response.status + ' - ' + response.text();
+        }
+        console.log('Subscribed to "'+topic+'"');
+      }).catch(error => {
+        console.error(error);
+      })
+    }
 
     async function registerWorker() {
       console.log('Registering service worker');

@@ -5,15 +5,16 @@ firebase_cred = credentials.Certificate(r"C:\Users\admin\Desktop\desktop\web\lun
 firebase_app = firebase_admin.initialize_app(firebase_cred)
 
 # This registration token comes from the client FCM SDKs.
-registration_token = 'dPK5MvZi9S7SAHvWx7VhgL:APA91bH3FUc_OV30i2vN7MhNUiF-KUPrC5N0AKZgddX3_J1IevRlL8Pea50cf_z36aYHI0RsDa2HKFxLP071yD_E2zt9nwvRY3lZzOsK2CMBeGq_e5rhyIxnm4kOxIP1Z-P7-F26Sk_F'
+# registration_token = 'dPK5MvZi9S7SAHvWx7VhgL:APA91bH3FUc_OV30i2vN7MhNUiF-KUPrC5N0AKZgddX3_J1IevRlL8Pea50cf_z36aYHI0RsDa2HKFxLP071yD_E2zt9nwvRY3lZzOsK2CMBeGq_e5rhyIxnm4kOxIP1Z-P7-F26Sk_F'
 
 # See documentation on defining a message payload.
 message = messaging.Message(
     data={
-        'title': '850',
-        'text': '2:45',
+        'title': 'Have you booked your lunch for tomorrow?',
+        'text': 'Please book your lunch by 8 p.m. Click on the notification to visit lunch booking URL. If you have already booked your lunch then please ignore this notification.',
+        'url': 'https://imran2205.github.io/lunch_booking/'
     },
-    token=registration_token,
+    topic='all'
 )
 
 # Send a message to the device corresponding to the provided
