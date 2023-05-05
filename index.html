@@ -754,6 +754,7 @@
         url_js = 'firebase-messaging-sw.js';
         scp = '.../';
       }
+      console.log(scp);
       const registration = await navigator.serviceWorker.register(url_js, {scope: scp});
       console.log('Registered service worker');
       navigator.serviceWorker.ready.then(function(reg) {
