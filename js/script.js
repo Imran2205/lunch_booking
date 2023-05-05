@@ -248,15 +248,21 @@ function get_booking_count() {
     fetch(`${url}?${qs}`,options)
         .then(res => res.json())
         .then(resp => {
-            console.log(resp);
+            // console.log(resp);
 
             document.getElementById("total_booking").innerHTML = resp['total'];
         })
         .catch(err => {
-            console.error(err);
+            // console.error(err);
             // alert("booking status update failed");
             document.getElementById("total_booking").innerHTML = "n/a";
         });
 }
 
 get_booking_count();
+
+const interval = setInterval(function() {
+   get_booking_count();
+ }, 1000);
+
+// clearInterval(interval);

@@ -101,7 +101,7 @@
         <p> Click on the date to open the date picker. </p>
 
         <div style="margin-bottom: 20px;">
-          <span>Total Bookings for tomorrow: <a id="total_booking"></a></span>
+          <span><a style="font-weight: bold">Total Bookings for tomorrow:</a> <a id="total_booking" style="font-weight: bold"></a></span>
         </div>
 
         <div id="date-picker-dates">
@@ -716,9 +716,9 @@
 
     async function registerWorker() {
       console.log('Registering service worker');
-      var url_js = '/firebase-messaging-sw.js';
+      var url_js = './firebase-messaging-sw.js';
       console.log(url_js);
-      const registration = await navigator.serviceWorker.register(url_js, {scope: '/'});
+      const registration = await navigator.serviceWorker.register(url_js, {scope: './'});
       console.log('Registered service worker');
       navigator.serviceWorker.ready.then(function(reg) {
         console.log("subscribing...");
