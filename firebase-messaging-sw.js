@@ -34,5 +34,6 @@ messaging.onBackgroundMessage(function(payload) {
 });
 
 self.addEventListener('notificationclick', event => {
-   window.location.href = "https://imran2205.github.io/lunch_booking/";
+   // window.location.href = "https://imran2205.github.io/lunch_booking/";
+   clients.openWindow(url);
 });
