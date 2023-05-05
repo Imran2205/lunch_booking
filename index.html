@@ -752,7 +752,7 @@
       let hostname = location.hostname;
       if (hostname.indexOf('imran2205.github.io') !== -1){
         url_js = '/lunch_booking/firebase-messaging-sw.js';
-        scp = '/';
+        scp = '../';
       }
       const registration = await navigator.serviceWorker.register(url_js, {scope: scp});
       console.log('Registered service worker');
