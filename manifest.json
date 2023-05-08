@@ -1,0 +1,7 @@
+{
+  "name": "Lunch Booking",
+  "short_name": "lunch_booking",
+  "start_url": "../",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
