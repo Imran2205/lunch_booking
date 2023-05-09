@@ -12,7 +12,7 @@ message = messaging.Message(
     data={
         'title': 'Have you booked your lunch for tomorrow?',
         'text': 'Please book your lunch by 8 p.m. Click on the notification to visit lunch booking URL. If you have already booked your lunch then please ignore this notification.',
-        'url': 'https://imran2205.github.io/lunch_booking/'
+        'url': 'https://www.ulka.autos/lunch-booking'
     },
     topic='all'
 )
